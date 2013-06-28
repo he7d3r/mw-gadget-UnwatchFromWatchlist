@@ -1,5 +1,5 @@
 /**
- * Unwatch from watchlist
+ * Unwatch from watchlist ([[bugzilla:424]])
  * Unwatchlink per item on watchlist (adds " | unwatch" for each entry)
  * Rewritten by Krinkle (2011-01-31)
  *
@@ -7,9 +7,9 @@
  * @rev: 1
  * @tracking: [[Special:GlobalUsage/User:Helder.wiki/Tools/UnwatchFromWatchlist.js]] ([[File:User:Helder.wiki/Tools/UnwatchFromWatchlist.js]])
  */
-/*jslint browser: true, white: true*/
+/*jshint browser: true, camelcase: true, curly: true, eqeqeq: true, immed: true, latedef: true, newcap: true, noarg: true, noempty: true, nonew: true, quotmark: true, undef: true, unused: true, strict: true, trailing: true, maxlen: 120, evil: true, laxbreak: true, onevar: true */
 /*global jQuery, mediaWiki */
-( function ( $, mw /* , undefined */ ) {
+( function ( mw, $ ) {
 'use strict';
 
 function addUnwatchlink(){
@@ -17,7 +17,7 @@ function addUnwatchlink(){
 	var $wlHistLinks = $( '#content' ).find( 'ul.special > li > a[href$="action=history"]');
 	$.each( $wlHistLinks, function() {
 		/*jslint unparam: true*/
-		var	$el = $( this ), // Cache the result instead of calling $() again
+		var $el = $( this ), // Cache the result instead of calling $() again
 			$unwatch = $el.clone()
 				.text( 'unwatch' )
 				.css('color', 'gray')
@@ -29,9 +29,12 @@ function addUnwatchlink(){
 	});
 }
 
-if ( mw.config.get( 'wgCanonicalSpecialPageName' ) === 'Watchlist' && window.location.href.indexOf( '/edit' ) === -1 && window.location.href.indexOf( '/raw' ) === -1 ) {
+if ( mw.config.get( 'wgCanonicalSpecialPageName' ) === 'Watchlist'
+	&& window.location.href.indexOf( '/edit' ) === -1
+	&& window.location.href.indexOf( '/raw' ) === -1
+) {
 	// Only on Watchlist and not in the /edit or /raw mod
 	$( addUnwatchlink );
 }
 
-}( jQuery, mediaWiki ) );
+}( mediaWiki, jQuery ) );
