@@ -6,8 +6,6 @@
  * @source: [[mw:Snippets/Unwatch_from_watchlist]]
  * @rev: 1
  */
-/*jshint browser: true, camelcase: true, curly: true, eqeqeq: true, immed: true, latedef: true, newcap: true, noarg: true, noempty: true, nonew: true, quotmark: true, undef: true, unused: true, strict: true, trailing: true, maxlen: 120, evil: true, laxbreak: true, onevar: true */
-/*global jQuery, mediaWiki */
 ( function ( mw, $ ) {
 'use strict';
 
@@ -15,15 +13,15 @@ function addUnwatchlink(){
 	// Get the links
 	var $wlHistLinks = $( '#content' ).find( 'ul.special > li > a[href$="action=history"]');
 	$.each( $wlHistLinks, function() {
-		/*jslint unparam: true*/
 		var $el = $( this ), // Cache the result instead of calling $() again
 			$unwatch = $el.clone()
 				.text( 'unwatch' )
 				.css('color', 'gray')
+				/*jshint unused:false */
 				.attr( 'href', function( i, val ) {
 					return val.replace( 'action=history', 'action=unwatch' );
 				} );
-		/*jslint unparam: false*/
+				/*jshint unused:true */
 		$el.after( $unwatch ).after( ' | ' );
 	});
 }
