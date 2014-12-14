@@ -1,7 +1,7 @@
 /**
  * Unwatch from watchlist
  *
- * Add an "unwatch" link near each entry on the watchlist view ([[bugzilla:424]]).
+ * Add an "unwatch" link near each entry on the watchlist view ([[phab:T2424]]).
  *
  * @author Krinkle, 2011-2014
  * @source: [[mw:Snippets/Unwatch_from_watchlist]]
